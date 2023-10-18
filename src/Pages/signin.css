@@ -1,0 +1,130 @@
+/* login.css */
+.log-div {
+  margin-top: 100px;
+  margin-left: 35%;
+  width: 30%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #fff;
+}
+
+.log-div h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.log-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.log-user,
+.log-pass {
+  align-content: center;
+  justify-content: center;
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.log-b {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  width: 100px;
+  transition: background-color 0.3s ease;
+  margin-left: 140px;
+}
+
+.log-b:hover {
+  background-color: #0056b3;
+}
+
+.reguser {
+  margin-top: 10px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.reguser:hover {
+  color: red;
+}
+
+.loglogo {
+  height: 80px;
+}
+
+/*App Bar */
+
+.navv {
+  height: 80px;
+  background-color: #007bff;
+  display: flex;
+}
+
+.cartt {
+  margin-left: 50px;
+  margin-top: 22px;
+  font-size: 30px;
+  color: white;
+  font-family: ui-rounded;
+  font-weight: 700;
+}
+
+.login_logo {
+  height: 80px;
+  margin-left: 20px;
+}
+
+.regiss {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 30px;
+  font-family: ui-rounded;
+  margin-top: 20px;
+  margin-left: 900px;
+}
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+  .log-div {
+    margin-left: 5%;
+    width: 90%;
+  }
+  .log-b {
+    width: 80px;
+    margin-left: 100px;
+  }
+  .regiss {
+    margin-left: 20px;
+  }
+  .cartt {
+    margin-left: 20px;
+  }
+  
+
+}

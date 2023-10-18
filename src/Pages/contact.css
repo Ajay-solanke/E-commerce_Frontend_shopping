@@ -1,0 +1,82 @@
+.slanting-contact-div {
+    background-color: #f7f8b1;
+    height: 30rem;
+    width: 101%;
+    position: absolute;
+    bottom: 11rem; 
+    left: -2rem;
+    margin-left: 0.1%;
+    margin-bottom: 8%;
+    -webkit-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+    z-index: -1; /* Set a lower z-index to place it below header and content */
+    overflow-x: hidden;
+  }
+
+  
+  .inner-contact {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    width: 70%;
+    border-radius: 1%;
+    margin: 0 auto;
+    margin-top: 6%;
+    padding: 50px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    overflow-x: hidden;
+    margin-bottom: 50px;
+  }
+  
+
+  .contact-left {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    
+  }
+  
+  .contact-right {
+    flex: 1;
+    text-align: right;
+  }
+
+
+  .contact-heading p:first-child {
+    color: darkgray; 
+    font-weight: bold; 
+    font-size: 2.8em; 
+    position: relative; 
+    z-index: 3; 
+  }
+  
+  .support-overlay p {
+    font-weight: bold;
+    font-size: 4.7em;
+    position: absolute;
+    margin-top: -17%;
+    z-index: 1;
+    background: rgba(243, 206, 219, 0.8);
+    -webkit-background-clip: text;
+    color: transparent;
+    background-clip: text;
+  }
+
+  .contact-textarea {
+    width: 95%;
+    margin-left: 1%;
+  }
+
+  .contact-send-button {
+    background: linear-gradient(to right, #a3d7e7, #a0e7ec66);
+    display: block; /* Make the button a block-level element */
+    margin: 0 auto; /* Center the button horizontally */
+    border-radius: 5px;
+    color: #fff;
+    width: 150px;
+    height: 50px;
+    color: black;
+  }

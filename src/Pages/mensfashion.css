@@ -1,0 +1,207 @@
+
+
+ 
+
+.m-m{
+  margin-top: 100px;
+}
+
+.Container {
+
+    margin-top: 20px;
+
+  }
+
+ 
+
+  /* Heading styles */
+
+  .Typography {
+
+    font-size: 28px;
+
+    margin-bottom: 20px;
+
+  }
+
+ 
+
+  /* Product card styles */
+
+  .product-card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 20px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+    transition: transform 0.2s;
+
+    background-color: #fff;
+
+    margin-bottom: 20px;
+
+  }
+
+ 
+
+  /* Product image styles */
+
+  .product-card img {
+
+    max-width: 50%;
+
+    height: auto;
+
+    margin-bottom: 10px;
+
+    height: 40%;
+
+  }
+
+ 
+
+  /* Product name styles */
+
+  .product-card .Typography {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+
+  }
+
+ 
+
+  /* Product description styles */
+
+  .product-card .Typography.body2 {
+
+    color: #777;
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+
+  }
+
+ 
+
+  /* Product price styles */
+
+  .product-card .Typography.h6 {
+
+    color: #007bff;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+
+  }
+
+ 
+
+  /* Button styles */
+
+  .product-card .Button {
+
+    background-color: #007bff;
+
+    color: #fff;
+
+    transition: background-color 0.3s;
+
+    font-weight: bold;
+
+  }
+
+ 
+
+  .product-card .Button:hover {
+
+    background-color: #0056b3;
+
+  }
+
+ 
+
+  /* Carousel styles */
+
+  .react-responsive-carousel {
+
+    width: 100%;
+
+    max-width: 300px; /* Adjust the max-width as needed */
+
+    margin: 0 auto;
+
+  }
+
+ 
+
+  /* Carousel slide styles */
+
+  .react-responsive-carousel .carousel .slide {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background-color: #f4f4f4;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+  }
+
+ 
+
+  /* Carousel arrow styles */
+
+  .react-responsive-carousel .carousel .control-arrow {
+
+    font-size: 24px;
+
+    color: #007bff;
+
+  }
+
+ 
+
+  /* Adjust the arrow position if needed */
+
+  .react-responsive-carousel .carousel .control-prev {
+
+    left: 10px;
+
+  }
+
+ 
+
+  .react-responsive-carousel .carousel .control-next {
+
+    right: 10px;
+
+  }
+
+ 
