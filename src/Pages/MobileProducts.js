@@ -13,24 +13,27 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useCart } from "react-use-cart";
 
+// Import your custom CSS for styling
+import "./MobileProducts.css"; 
+
 function MobileProducts() {
   const { addItem } = useCart();
-  const [menProducts, setMenProducts] = useState([]);
+  const [mobileProducts, setMobileProducts] = useState([]);
 
-  const menProductsAPI = "http://192.168.68.25:8080/api/Mobiles-products";
+  const mobileProductsAPI = "http://192.168.68.25:8080/api/Mobiles-products";
 
   useEffect(() => {
-    fetch(menProductsAPI)
+    fetch(mobileProductsAPI)
       .then((response) => response.json())
       .then((data) => {
         const formattedProducts = data.products.map((product, index) => ({
           ...product,
           id: index.toString(), // Convert the index to a string and use it as the ID
         }));
-        setMenProducts(formattedProducts);
+        setMobileProducts(formattedProducts);
       })
       .catch((error) => {
-        console.error("Error fetching men's products:", error);
+        console.error("Error fetching mobile products:", error);
       });
   }, []);
 
@@ -55,23 +58,18 @@ function MobileProducts() {
           </Typography>
 
           <Grid container spacing={3}>
-            {menProducts.length > 0 ? (
-              menProducts.map((product) => (
+            {mobileProducts.length > 0 ? (
+              mobileProducts.map((product) => (
                 <Grid item key={product.id} xs={12} sm={6} md={4}>
-                  <Card>
+                  <Card className="custom-card"> {/* Apply the same custom card styling */}
                     <div className="product-card">
-                      <Carousel
-                        autoPlay
-                        interval={3000}
-                        showArrows={true}
-                        // style={{ height: "100px" }}
-                      >
+                      <Carousel autoPlay interval={3000} showArrows={true}>
                         {product.images.map((image, index) => (
                           <div key={index}>
                             <img
                               src={image}
                               alt={`${product.name} - ${index}`}
-                              // style={{ height: "100px" }}
+                              className="custom-carousel-image" // Apply the same custom carousel image styling
                             />
                           </div>
                         ))}
@@ -94,6 +92,7 @@ function MobileProducts() {
                         variant="contained"
                         color="primary"
                         onClick={() => handleAddToCart(product)}
+                        className="add-to-cart-button"
                       >
                         Add to Cart
                       </Button>

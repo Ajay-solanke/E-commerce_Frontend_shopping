@@ -13,6 +13,9 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useCart } from "react-use-cart";
 
+// Import your custom CSS for styling
+import "./mensfashion.css"; 
+
 function MensFashion() {
   const { addItem } = useCart();
   const [menProducts, setMenProducts] = useState([]);
@@ -58,7 +61,7 @@ function MensFashion() {
             {menProducts.length > 0 ? (
               menProducts.map((product) => (
                 <Grid item key={product.id} xs={12} sm={6} md={4}>
-                  <Card>
+                  <Card className="custom-card"> {/* Apply custom card styling */}
                     <div className="product-card">
                       <Carousel autoPlay interval={2000} showArrows={true}>
                         {product.images.map((image, index) => (
@@ -66,6 +69,7 @@ function MensFashion() {
                             <img
                               src={image}
                               alt={`${product.name} - ${index}`}
+                              className="custom-carousel-image" // Apply custom carousel image styling
                             />
                           </div>
                         ))}

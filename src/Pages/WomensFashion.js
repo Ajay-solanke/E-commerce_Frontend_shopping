@@ -13,24 +13,27 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useCart } from "react-use-cart";
 
+// Import the same CSS for styling
+import "./mensfashion.css";
+
 function WomensFashion() {
   const { addItem } = useCart();
-  const [menProducts, setMenProducts] = useState([]);
+  const [womenProducts, setWomenProducts] = useState([]);
 
-  const menProductsAPI = "http://192.168.68.25:8080/api/womens-products";
+  const womenProductsAPI = "http://192.168.68.25:8080/api/womens-products";
 
   useEffect(() => {
-    fetch(menProductsAPI)
+    fetch(womenProductsAPI)
       .then((response) => response.json())
       .then((data) => {
         const formattedProducts = data.products.map((product, index) => ({
           ...product,
-          id: index.toString(), // Convert the index to a string and use it as the ID
+          id: index.toString(),
         }));
-        setMenProducts(formattedProducts);
+        setWomenProducts(formattedProducts);
       })
       .catch((error) => {
-        console.error("Error fetching men's products:", error);
+        console.error("Error fetching women's products:", error);
       });
   }, []);
 
@@ -51,14 +54,14 @@ function WomensFashion() {
         <Header />
         <Container>
           <Typography variant="h3" gutterBottom>
-            <h2>women's Products</h2>
+            <h2>Women's Products</h2>
           </Typography>
 
           <Grid container spacing={3}>
-            {menProducts.length > 0 ? (
-              menProducts.map((product) => (
+            {womenProducts.length > 0 ? (
+              womenProducts.map((product) => (
                 <Grid item key={product.id} xs={12} sm={6} md={4}>
-                  <Card>
+                  <Card className="custom-card">
                     <div className="product-card">
                       <Carousel autoPlay interval={3000} showArrows={true}>
                         {product.images.map((image, index) => (
@@ -66,12 +69,13 @@ function WomensFashion() {
                             <img
                               src={image}
                               alt={`${product.name} - ${index}`}
+                              className="custom-carousel-image"
                             />
                           </div>
                         ))}
                       </Carousel>
                     </div>
-                    <CardContent>
+                    <CardContent className="custom-card-content">
                       <Typography
                         variant="h6"
                         gutterBottom

@@ -1,18 +1,14 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
-
 import Box from "@mui/material/Box";
-
 import Drawer from "@mui/material/Drawer";
-
 import List from "@mui/material/List";
-
 import Divider from "@mui/material/Divider";
-
+import ListItem from "@mui/material/ListItem"; // Add this import
 import ListItemButton from "@mui/material/ListItemButton";
-
+import ListItemText from "@mui/material/ListItemText"; // Add this import
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+
 
 export default function Sidebar() {
   const [state, setState] = React.useState({
@@ -84,6 +80,19 @@ export default function Sidebar() {
               Mobile Phones
             </Link>
           </div>
+          <br></br>
+          <div style={{ marginTop: "-10px" }}>
+            <Link
+              to="/electronics"
+              style={{
+                marginLeft: "10px",
+                textDecoration: "none",
+                color: "black",
+              }}
+            >
+              Electronics Products
+            </Link>
+          </div>
         </List>
 
         <Divider />
@@ -102,13 +111,13 @@ export default function Sidebar() {
               Your Account
             </Link>
           </ListItemButton>
-          {/* {["Customer-Service"].map((text, index) => (
+          {["Customer-Service"].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
-        ))} */}
+        ))}
           <Link
             to="/Customer-Service"
             style={{
