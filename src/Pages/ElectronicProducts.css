@@ -1,0 +1,22 @@
+/* ElectronicProducts.css */
+
+.custom-electronic-card {
+    width: 90%;
+    height: 500px;
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .custom-electronic-carousel-image {
+    max-width: 80%;
+    max-height: 250px;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .custom-electronic-card-content {
+    
+    text-align: center; 
+    padding: 20px;
+  }
+  

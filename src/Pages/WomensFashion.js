@@ -1,3 +1,4 @@
+// WomensFashion.js
 import React, { useEffect, useState } from "react";
 import {
   Container,
@@ -13,14 +14,14 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useCart } from "react-use-cart";
 
-// Import the same CSS for styling
-import "./mensfashion.css";
+// Import the unique CSS for styling
+import "./WomensFashion.css";
 
 function WomensFashion() {
   const { addItem } = useCart();
   const [womenProducts, setWomenProducts] = useState([]);
 
-  const womenProductsAPI = "http://192.168.68.25:8080/api/womens-products";
+  const womenProductsAPI = "http://192.168.68.24:8080/api/womens-products";
 
   useEffect(() => {
     fetch(womenProductsAPI)
@@ -50,8 +51,10 @@ function WomensFashion() {
 
   return (
     <>
-      <div style={{ marginTop: "78px", position: "relative" }}>
+      <div>
         <Header />
+      </div>
+      <div>
         <Container>
           <Typography variant="h3" gutterBottom>
             <h2>Women's Products</h2>
@@ -61,7 +64,7 @@ function WomensFashion() {
             {womenProducts.length > 0 ? (
               womenProducts.map((product) => (
                 <Grid item key={product.id} xs={12} sm={6} md={4}>
-                  <Card className="custom-card">
+                  <Card className="custom-womens-card">
                     <div className="product-card">
                       <Carousel autoPlay interval={3000} showArrows={true}>
                         {product.images.map((image, index) => (
@@ -69,13 +72,13 @@ function WomensFashion() {
                             <img
                               src={image}
                               alt={`${product.name} - ${index}`}
-                              className="custom-carousel-image"
+                              className="custom-womens-carousel-image"
                             />
                           </div>
                         ))}
                       </Carousel>
                     </div>
-                    <CardContent className="custom-card-content">
+                    <CardContent className="custom-womens-card-content">
                       <Typography
                         variant="h6"
                         gutterBottom
@@ -106,6 +109,8 @@ function WomensFashion() {
             )}
           </Grid>
         </Container>
+      </div>
+      <div>
         <Footer />
       </div>
     </>

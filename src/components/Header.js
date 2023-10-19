@@ -15,7 +15,7 @@ const Header = () => {
   useEffect(() => {
     setThemeMode(darkMode);
     console.log(darkMode);
-  }, [darkMode]);
+  }, [darkMode,setThemeMode]);
 
   const { isEmpty, totalItems } = useCart();
 
@@ -28,12 +28,12 @@ const Header = () => {
         className={
           darkMode ? "bg-light-black border-bottom" : "bg-light border-bottom"
         }
-        style={{
-          width: "100%",
-          position: "fixed",
-          zIndex: 100,
-          marginTop: "-78px",
-        }}
+        // style={{
+        //   width: "100%",
+        //   position: "fixed",
+        //   // zIndex: 100,
+        //   marginTop: "0 auto",
+        // }}
       >
         <Container>
           <Link to="">

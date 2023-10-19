@@ -14,13 +14,13 @@ import Footer from "../components/Footer";
 import { useCart } from "react-use-cart";
 
 // Import your custom CSS for styling
-import "./MobileProducts.css"; 
+import "./MobileProducts.css";
 
 function MobileProducts() {
   const { addItem } = useCart();
   const [mobileProducts, setMobileProducts] = useState([]);
 
-  const mobileProductsAPI = "http://192.168.68.25:8080/api/Mobiles-products";
+  const mobileProductsAPI = "http://192.168.68.24:8080/api/Mobiles-products";
 
   useEffect(() => {
     fetch(mobileProductsAPI)
@@ -50,8 +50,10 @@ function MobileProducts() {
 
   return (
     <>
-      <div style={{ marginTop: "78px", position: "relative" }}>
+      <div>
         <Header />
+      </div>
+      <div>
         <Container>
           <Typography variant="h3" gutterBottom>
             <h2>Mobile's Products</h2>
@@ -61,7 +63,7 @@ function MobileProducts() {
             {mobileProducts.length > 0 ? (
               mobileProducts.map((product) => (
                 <Grid item key={product.id} xs={12} sm={6} md={4}>
-                  <Card className="custom-card"> {/* Apply the same custom card styling */}
+                  <Card className="custom-mobile-card"> {/* Apply the same custom card styling */}
                     <div className="product-card">
                       <Carousel autoPlay interval={3000} showArrows={true}>
                         {product.images.map((image, index) => (
@@ -69,13 +71,13 @@ function MobileProducts() {
                             <img
                               src={image}
                               alt={`${product.name} - ${index}`}
-                              className="custom-carousel-image" // Apply the same custom carousel image styling
+                              className="custom-mobile-carousel-image" // Apply the same custom carousel image styling
                             />
                           </div>
                         ))}
                       </Carousel>
                     </div>
-                    <CardContent>
+                    <CardContent className="custom-Mobile-card-content">
                       <Typography
                         variant="h6"
                         gutterBottom
@@ -107,6 +109,8 @@ function MobileProducts() {
             )}
           </Grid>
         </Container>
+      </div>
+      <div>
         <Footer />
       </div>
     </>

@@ -4,11 +4,21 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem"; // Add this import
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText"; // Add this import
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+const theme = createTheme({
+  components: {
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          borderRadius: "0 50px 50px 0",
+        },
+      },
+    },
+  },
+});
 
 export default function Sidebar() {
   const [state, setState] = React.useState({
@@ -28,78 +38,101 @@ export default function Sidebar() {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 200 }} // Modify the width here
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <div style={{ borderRadius: "2px 20px 20px 2px" }}>
+      <div>
+        <div
+          style={{
+            padding: "15px",
+            marginLeft: "20px",
+          }}
+        ></div>
         <List>
-          <h2>Hello</h2>
+          <List>
+            <h5>SHOP BY CATEGORY</h5>
+            <ListItemButton
+              sx={{
+                "&:hover": {
+                  backgroundColor: "lightgray",
+                },
+              }}
+            >
+              <Link
+                to="/mensfashion"
+                style={{
+                  marginLeft: "10px",
+                  textDecoration: "none",
+                  color: "black",
+                }}
+              >
+                Mens Fashion
+              </Link>
+            </ListItemButton>
+            <ListItemButton
+              sx={{
+                "&:hover": {
+                  backgroundColor: "lightgray",
+                },
+              }}
+            >
+              <Link
+                to="/womensfashion"
+                style={{
+                  marginLeft: "10px",
+                  textDecoration: "none",
+                  color: "black",
+                }}
+              >
+                Womens Fashion
+              </Link>
+            </ListItemButton>
+            <ListItemButton
+              sx={{
+                "&:hover": {
+                  backgroundColor: "lightgray",
+                },
+              }}
+            >
+              <Link
+                to="/mobilephones"
+                style={{
+                  marginLeft: "10px",
+                  textDecoration: "none",
+                  color: "black",
+                }}
+              >
+                Mobile Phones
+              </Link>
+            </ListItemButton>
+            <ListItemButton
+              sx={{
+                "&:hover": {
+                  backgroundColor: "lightgray",
+                },
+              }}
+            >
+              <Link
+                to="/electronics"
+                style={{
+                  marginLeft: "10px",
+                  textDecoration: "none",
+                  color: "black",
+                }}
+              >
+                Electronics Products
+              </Link>
+            </ListItemButton>
+          </List>
         </List>
-
-        <List>
-          <h5>Shop by category</h5>
-
-          <div>
-            <Link
-              to="/mensfashion"
-              style={{
-                marginLeft: "10px",
-                textDecoration: "none",
-                color: "black",
-              }}
-            >
-              Mens Fashion
-            </Link>
-          </div>
-          <br></br>
-          <div style={{ marginTop: "-10px" }}>
-            <Link
-              to="/womensfashion"
-              style={{
-                marginLeft: "10px",
-                textDecoration: "none",
-                color: "black",
-                // marginTop: "20px",
-              }}
-            >
-              Womens Fashion
-            </Link>
-          </div>
-          <br></br>
-          <div style={{ marginTop: "-10px" }}>
-            <Link
-              to="/mobilephones"
-              style={{
-                marginLeft: "10px",
-                textDecoration: "none",
-                color: "black",
-              }}
-            >
-              Mobile Phones
-            </Link>
-          </div>
-          <br></br>
-          <div style={{ marginTop: "-10px" }}>
-            <Link
-              to="/electronics"
-              style={{
-                marginLeft: "10px",
-                textDecoration: "none",
-                color: "black",
-              }}
-            >
-              Electronics Products
-            </Link>
-          </div>
-        </List>
-
         <Divider />
-
         <List>
-          <h5>Help & Setting</h5>
-          <ListItemButton>
+          <h5>HELP & ACCOUNTS</h5>
+          <ListItemButton
+            sx={{ "&:hover": { backgroundColor: "lightgray" } }}
+          >
             <Link
               to="/my-account"
               style={{
@@ -111,45 +144,44 @@ export default function Sidebar() {
               Your Account
             </Link>
           </ListItemButton>
-          {["Customer-Service"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-          <Link
-            to="/Customer-Service"
-            style={{
-              marginLeft: "10px",
-              textDecoration: "none",
-              color: "black",
-            }}
+          <ListItemButton
+            sx={{ "&:hover": { backgroundColor: "lightgray" } }}
           >
-            Customer-Service
-          </Link>
+            <Link
+              to="/Customer-Service"
+              style={{
+                marginLeft: "10px",
+                textDecoration: "none",
+                color: "black",
+              }}
+            >
+              Customer-Service
+            </Link>
+          </ListItemButton>
         </List>
       </div>
     </Box>
   );
 
   return (
-    <div style={{ borderRadius: "2px 20px 20px 2px" }}>
-      {["Left"].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <MenuOpenIcon onClick={toggleDrawer(anchor, true)}>
-            {anchor}
-          </MenuOpenIcon>
+    <ThemeProvider theme={theme}>
+      <div style={{ borderRadius: "2px 20px 20px 2px" }}>
+        {["Left"].map((anchor) => (
+          <React.Fragment key={anchor}>
+            <MenuOpenIcon onClick={toggleDrawer(anchor, true)}>
+              {anchor}
+            </MenuOpenIcon>
 
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
-    </div>
+            <Drawer
+              anchor={anchor}
+              open={state[anchor]}
+              onClose={toggleDrawer(anchor, false)}
+            >
+              {list(anchor)}
+            </Drawer>
+          </React.Fragment>
+        ))}
+      </div>
+    </ThemeProvider>
   );
 }

@@ -12,15 +12,14 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useCart } from "react-use-cart";
-
-// Import your custom CSS for styling
-import "./mensfashion.css"; 
+import { Link } from "react-router-dom";
+import "./mensfashion.css";
 
 function MensFashion() {
   const { addItem } = useCart();
   const [menProducts, setMenProducts] = useState([]);
 
-  const menProductsAPI = "http://192.168.68.25:8080/api/mens-fashion-products";
+  const menProductsAPI = "http://192.168.68.24:8080/api/mens-fashion-products";
 
   useEffect(() => {
     fetch(menProductsAPI)
@@ -28,7 +27,7 @@ function MensFashion() {
       .then((data) => {
         const formattedProducts = data.products.map((product, index) => ({
           ...product,
-          id: index.toString(), // Convert the index to a string and use it as the ID
+          id: index.toString(), 
         }));
         setMenProducts(formattedProducts);
       })
@@ -50,44 +49,46 @@ function MensFashion() {
 
   return (
     <>
-      <div style={{ marginTop: "78px", position: "relative" }}>
+      <div>
         <Header />
-        <Container>
-          <Typography variant="h3" gutterBottom>
-            <h2>Men's Products</h2>
-          </Typography>
+      </div>
+      <Container>
+        <Typography variant="h3" gutterBottom>
+          <h2>Men's Products</h2>
+        </Typography>
 
-          <Grid container spacing={3}>
-            {menProducts.length > 0 ? (
-              menProducts.map((product) => (
-                <Grid item key={product.id} xs={12} sm={6} md={4}>
-                  <Card className="custom-card"> {/* Apply custom card styling */}
-                    <div className="product-card">
-                      <Carousel autoPlay interval={2000} showArrows={true}>
-                        {product.images.map((image, index) => (
-                          <div key={index}>
-                            <img
-                              src={image}
-                              alt={`${product.name} - ${index}`}
-                              className="custom-carousel-image" // Apply custom carousel image styling
-                            />
-                          </div>
-                        ))}
-                      </Carousel>
-                    </div>
-                    <CardContent>
-                      <Typography
-                        variant="h6"
-                        gutterBottom
-                        style={{ fontSize: "1rem" }}
-                      >
-                        {product.name}
-                      </Typography>
+        <Grid container spacing={3}>
+          {menProducts.length > 0 ? (
+            menProducts.map((product) => (
+              <Grid item key={product.id} xs={12} sm={6} md={4}>
+                <Card className="custom-card">
+                  <div className="product-card">
+                    <Carousel autoPlay interval={2000} showArrows={true}>
+                      {product.images.map((image, index) => (
+                        <div key={index}>
+                          <img
+                            src={image}
+                            alt={`${product.name} - ${index}`}
+                            className="custom-carousel-image"
+                          />
+                        </div>
+                      ))}
+                    </Carousel>
+                  </div>
+                  <CardContent className="custom-mens-card-content">
+                    <Typography
+                      variant="h6"
+                      gutterBottom
+                      style={{ fontSize: "1rem" }}
+                    >
+                      {product.name}
+                    </Typography>
 
-                      <Typography variant="h6" color="primary">
-                        Price: Rs {product.price.toFixed(2)}
-                      </Typography>
+                    <Typography variant="h6" color="primary">
+                      Price: Rs {product.price.toFixed(2)}
+                    </Typography>
 
+                    <Link to={`/product/${product._id}`}>
                       <Button
                         variant="contained"
                         color="primary"
@@ -95,19 +96,22 @@ function MensFashion() {
                       >
                         Add to Cart
                       </Button>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              ))
-            ) : (
-              <Typography variant="body2" color="textSecondary">
-                No men's products available at the moment.
-              </Typography>
-            )}
-          </Grid>
-        </Container>
+                    </Link>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))
+          ) : (
+            <Typography variant="body2" color="textSecondary">
+              No men's products available at the moment.
+            </Typography>
+          )}
+        </Grid>
+      </Container>
+      <div>
         <Footer />
       </div>
+
     </>
   );
 }

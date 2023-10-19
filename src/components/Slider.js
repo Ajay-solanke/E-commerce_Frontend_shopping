@@ -1,47 +1,73 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect, useMemo } from "react";
 import "./slider.css";
 
 function Slider() {
-  const images = [
-    "https://www.sliderrevolution.com/wp-content/uploads/2023/06/sneaker-woocommerce-slider.gif",
-
-    "https://assets.materialup.com/uploads/cfc52b70-8f0d-410d-8d6d-c7e05956cce0/preview.gif",
-
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStB67-K1QgbSft0n78ygaLge7z9SNI6IyNxA&usqp=CAU",
-
-    // 'https://www.sliderrevolution.com/wp-content/uploads/2023/03/wordpress-cover-flow-gallery.gif',
-  ];
+  const images = useMemo(() => [
+    "https://imagescdn.planetfashion.in/img/app/product/7/794038-9320264.jpg",
+    "https://imagescdn.planetfashion.in/img/app/product/7/794038-9320263.jpg",
+    "https://imagescdn.planetfashion.in/img/app/product/7/757476-8641416.jpg",
+    "https://imagescdn.planetfashion.in/img/app/product/7/757476-8641421.jpg",
+    "https://imagescdn.planetfashion.in/img/app/product/7/749208-8459394.jpg",
+    "https://imagescdn.planetfashion.in/img/app/product/7/749208-8459397.jpg",
+    "https://imagescdn.planetfashion.in/img/app/product/7/741040-8306782.jpg",
+    "https://imagescdn.planetfashion.in/img/app/product/7/741040-8306785.jpg",
+    "https://imagescdn.planetfashion.in/img/app/product/7/749208-8459394.jpg",
+    "https://imagescdn.planetfashion.in/img/app/product/7/749208-8459397.jpg",
+    "https://imagescdn.planetfashion.in/img/app/product/8/868208-10301368.jpg",
+    // Add more image URLs here
+  ], []);
 
   const [currentImage, setCurrentImage] = useState(0);
 
-  const goToNextSlide = () => {
-    setCurrentImage((prevImage) =>
-      prevImage === images.length - 1 ? 0 : prevImage + 1
-    );
+  useEffect(() => {
+    const goToNextSlide = () => {
+      
+      const nextImageIndex = (currentImage + 1) % images.length;
+
+     
+      setCurrentImage(nextImageIndex === 0 ? 0 : nextImageIndex);
+    };
+
+    
+    const interval = setInterval(goToNextSlide, 3000); 
+    return () => {
+      clearInterval(interval);
+    };
+  }, [currentImage, images]);
+
+  const sliderContainerStyle = {
+    height: "600px",
+    width: "100%",
+    display: "flex",
+    overflow: "hidden",
   };
 
-  const goToPrevSlide = () => {
-    setCurrentImage((prevImage) =>
-      prevImage === 0 ? images.length - 1 : prevImage - 1
-    );
+  const sliderWrapperStyle = {
+    display: "flex",
+    transform: `translateX(-${currentImage * (100 / images.length)}%)`,
+    transition: "transform 0.5s",
+    width: `${images.length * 100}%`,
+  };
+
+  const sliderImageStyle = {
+    flex: `0 0 ${100 / images.length}%`,
+    height: "100%",
   };
 
   return (
-    <div className="slider-container">
-      <button className="slider-button" onClick={goToPrevSlide}>
-        Previous
-      </button>
-
-      <img
-        className="slider-image"
-        src={images[currentImage]}
-        alt={`Slide ${currentImage + 1}`}
-      />
-
-      <button className="slider-button" onClick={goToNextSlide}>
-        Next
-      </button>
+    <div className="slider-main-container" style={sliderContainerStyle}>
+      <div className="slider-wrapper" style={sliderWrapperStyle}>
+        
+        {images.map((image, index) => (
+          <img
+            key={index}
+            className="slider-image"
+            src={image}
+            alt={`Slide ${index + 1}`}
+            style={sliderImageStyle}
+          />
+        ))}
+      </div>
     </div>
   );
 }

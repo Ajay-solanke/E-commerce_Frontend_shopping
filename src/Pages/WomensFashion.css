@@ -1,0 +1,24 @@
+/* WomensFashion.css */
+.custom-womens-card {
+    width: 90%;
+    height: 500px;
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .custom-womens-carousel-image {
+    max-width: 80%;
+    max-height: 340px;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .carousel .womens-thumbs-wrapper {
+    display: none;
+  }
+
+  .custom-womens-card-content {
+    text-align: center; 
+    padding: 20px;
+  }
+  

@@ -6,7 +6,7 @@ import { BsCartCheck, BsCartX } from "react-icons/bs";
 import Header from "../components/Header";
 
 const CartItemCard = ({ item, onDecrease, onIncrease, onRemove }) => {
-  const [theme] = useThemeHook();
+
 
   return (
     <Card className="mb-3">
@@ -74,7 +74,7 @@ const Cart = () => {
 
   return (
     <>
-      <div style={{ marginTop: "75px" }}>
+      <div>
         <Header></Header>
       </div>
 
@@ -87,9 +87,7 @@ const Cart = () => {
           {isEmpty ? "Your Cart is Empty" : "The Cart"}
         </h1>
         <Row className="justify-content-center">
-          {isEmpty ? (
-            <p>No items in the cart.</p>
-          ) : (
+          {isEmpty ? null : (
             items.map((item) => (
               <Col key={item.id} xs={12} md={6} lg={4}>
                 <CartItemCard

@@ -1,15 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Tab,
-  Nav,
-  Image,
-  Form,
-  Button,
-  Badge,
-} from "react-bootstrap";
+import React from "react";
+import { Container, Row, Col, Tab, Nav, Image } from "react-bootstrap";
 import { useThemeHook } from "../GlobalComponents/ThemeProvider";
 import Heading from "../components/Heading";
 import profilePix from "../images/profile-picture.png";
@@ -18,31 +8,16 @@ import { GiWallet } from "react-icons/gi";
 import { IoLocationSharp } from "react-icons/io5";
 import "./my-account.css";
 import OrderCard from "../components/OrderCard";
-import axios from "axios";
 import Header from "../components/Header";
 import Userdata from "../Pages/Userdata";
 
 const MyAccount = () => {
   const [theme] = useThemeHook();
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://192.168.68.33:8080/api/user")
-
-      .then((response) => {
-        setUsers(response.data);
-      })
-
-      .catch((error) => {
-        console.error("Error fetching user data: ", error);
-      });
-  }, []);
 
   return (
     <>
-      <div style={{ marginTop: "75px" }}>
-        <Header></Header>
+      <div>
+        <Header />
       </div>
       <Container className="py-5 mt-5">
         <Heading heading="My Account" />
@@ -66,26 +41,22 @@ const MyAccount = () => {
                 </Col>
                 <Col xs={9} className="pt-1">
                   <span>Hello,</span>
-                  <h4></h4>
+                  <h4>User's Name</h4>
                 </Col>
               </Row>
               <Nav variant="pills" className="flex-column">
                 <Nav.Item className="mb-3">
                   <Nav.Link eventKey="my-orders">
-                    My Orders
-                    <FaClipboardList size="1.4rem" />
+                    My Orders <FaClipboardList size="1.4rem" />
                   </Nav.Link>
                   <Nav.Link eventKey="account-details">
-                    Account Details
-                    <FaUser size="1.4rem" />
+                    Account Details <FaUser size="1.4rem" />
                   </Nav.Link>
                   <Nav.Link eventKey="address">
-                    Address
-                    <IoLocationSharp size="1.4rem" />
+                    Address <IoLocationSharp size="1.4rem" />
                   </Nav.Link>
                   <Nav.Link eventKey="wallet">
-                    Wallet
-                    <GiWallet size="1.4rem" />
+                    Wallet <GiWallet size="1.4rem" />
                   </Nav.Link>
                 </Nav.Item>
               </Nav>

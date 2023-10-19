@@ -1,3 +1,4 @@
+// ElectronicProducts.js
 import React, { useEffect, useState } from "react";
 import {
   Container,
@@ -13,14 +14,14 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useCart } from "react-use-cart";
 
-// Import the same CSS for styling
-import "./mensfashion.css"; 
+// Import the unique CSS for styling
+import "./ElectronicProducts.css";
 
 function ElectronicProducts() {
   const { addItem } = useCart();
   const [electronicProducts, setElectronicProducts] = useState([]);
 
-  const electronicProductsAPI = "http://192.168.68.25:8080/api/electronics-products";
+  const electronicProductsAPI = "http://192.168.68.24:8080/api/electronics-products";
 
   useEffect(() => {
     fetch(electronicProductsAPI)
@@ -50,8 +51,10 @@ function ElectronicProducts() {
 
   return (
     <>
-      <div style={{ marginTop: "78px", position: "relative" }}>
+      <div>
         <Header />
+      </div>
+      <div>
         <Container>
           <Typography variant="h3" gutterBottom>
             <h2>Electronic's Products</h2>
@@ -61,7 +64,7 @@ function ElectronicProducts() {
             {electronicProducts.length > 0 ? (
               electronicProducts.map((product) => (
                 <Grid item key={product.id} xs={12} sm={6} md={4}>
-                  <Card className="custom-card">
+                  <Card className="custom-electronic-card">
                     <div className="product-card">
                       <Carousel autoPlay interval={3000} showArrows={true}>
                         {product.images.map((image, index) => (
@@ -69,13 +72,13 @@ function ElectronicProducts() {
                             <img
                               src={image}
                               alt={`${product.name} - ${index}`}
-                              className="custom-carousel-image"
+                              className="custom-electronic-carousel-image"
                             />
                           </div>
                         ))}
                       </Carousel>
                     </div>
-                    <CardContent className="custom-card-content">
+                    <CardContent className="custom-electronic-card-content">
                       <Typography
                         variant="h6"
                         gutterBottom
@@ -106,8 +109,12 @@ function ElectronicProducts() {
             )}
           </Grid>
         </Container>
+      </div>
+      <div>
         <Footer />
       </div>
+
+
     </>
   );
 }
